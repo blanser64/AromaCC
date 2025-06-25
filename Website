@@ -1,0 +1,91 @@
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { MapPin } from "lucide-react";
+
+export default function AromaCoffeeShop() {
+  const [date, setDate] = useState(new Date());
+
+  return (
+    <div className="min-h-screen bg-[url('/background-coffee.jpg')] bg-cover bg-center text-white">
+      <header className="bg-black bg-opacity-70 p-6 flex justify-between items-center">
+        <img src="/mnt/data/IMG_7127.jpeg" alt="Aroma Coffee Logo" className="h-16 rounded shadow-md" />
+        <nav className="space-x-6">
+          <a href="#menu" className="hover:underline">Menu</a>
+          <a href="#events" className="hover:underline">Events</a>
+          <a href="#location" className="hover:underline">Find Us</a>
+          <a href="#signup" className="hover:underline">Sign Up</a>
+        </nav>
+      </header>
+
+      <section className="text-center mt-12 px-6">
+        <h1 className="text-5xl font-bold mb-4">Welcome to Aroma Coffee</h1>
+        <p className="text-xl">A place where every sip tells a story.</p>
+      </section>
+
+      <section id="menu" className="mt-16 px-6">
+        <h2 className="text-3xl font-semibold text-center mb-6">Our Menu</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          <Card className="bg-white text-black">
+            <CardContent className="p-4">
+              <h3 className="font-bold">Espresso</h3>
+              <p>$3.00</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-white text-black">
+            <CardContent className="p-4">
+              <h3 className="font-bold">Latte</h3>
+              <p>$4.50</p>
+            </CardContent>
+          </Card>
+          <Card className="bg-white text-black">
+            <CardContent className="p-4">
+              <h3 className="font-bold">Iced Coffee</h3>
+              <p>$4.00</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section id="events" className="mt-16 px-6">
+        <h2 className="text-3xl font-semibold text-center mb-6">Upcoming Events</h2>
+        <div className="flex justify-center">
+          <Calendar mode="single" selected={date} onSelect={setDate} className="rounded-md border shadow bg-white text-black" />
+        </div>
+      </section>
+
+      <section id="location" className="mt-16 px-6 text-center">
+        <h2 className="text-3xl font-semibold mb-6">Visit Us</h2>
+        <div className="flex justify-center items-center gap-2">
+          <MapPin className="w-5 h-5" />
+          <p>123 Brew Street, Coffee City, TX</p>
+        </div>
+        <iframe
+          className="mt-4 w-full max-w-xl h-64 mx-auto rounded-lg"
+          src="https://www.google.com/maps/embed/v1/place?q=123+Brew+Street,+Coffee+City,+TX&key=YOUR_API_KEY"
+          allowFullScreen
+          loading="lazy"
+        ></iframe>
+      </section>
+
+      <section id="signup" className="mt-16 px-6 text-center">
+        <h2 className="text-3xl font-semibold mb-6">Stay in the Loop</h2>
+        <p className="mb-4">Sign up to receive updates on events, specials, and more.</p>
+        <div className="flex justify-center gap-4">
+          <Input type="email" placeholder="Your email" className="max-w-sm" />
+          <Button>Sign Up</Button>
+        </div>
+      </section>
+
+      <footer className="mt-16 py-6 bg-black bg-opacity-70 text-center text-sm">
+        <p>Follow us on
+          <a href="https://www.instagram.com" className="mx-2 underline">Instagram</a>
+          <a href="https://www.facebook.com" className="underline">Facebook</a>
+        </p>
+        <p>&copy; 2025 Aroma Coffee. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+}
